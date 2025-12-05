@@ -337,25 +337,18 @@ $(function() {
   // Get URL parameters to set condition number and participant number
 function get_params() {
 
-    // 【1】URLに c が無ければランダムに 1 か 2 を割り当て
-    if(window.QueryString.c === undefined) {
-        window.condition = (Math.random() < 0.5) ? 1 : 2;
-        console.log("Random Condition:", window.condition);
+// condition number must be 1, 2, or 3
+    if(window.QueryString.c !== undefined && !isNaN(parseInt(window.QueryString.c)) && parseInt(window.QueryString.c) > 0 && parseInt(window.QueryString.c) < 4) {
+      window.condition = parseInt(window.QueryString.c);
+    } else {
+      window.condition = 1; // condition defaults to 1
     }
 
-    // 【2】URLに c がある場合は、その値（1 または 2）を使う
-    if(window.QueryString.c !== undefined && !isNaN(parseInt(window.QueryString.c))) {
-        const c = parseInt(window.QueryString.c);
-        if(c === 1 || c === 2) {
-            window.condition = c;
-        }
-    }
-
-    // participant number
+    // participant number must be numeric
     if(window.QueryString.p !== undefined && !isNaN(parseInt(window.QueryString.p))) {
       window.participant = parseInt(window.QueryString.p);
     } else {
-      window.participant = 0;
+      window.participant = 0; // participant defaults to 0
     }    
 
     // redirect
@@ -369,6 +362,7 @@ function get_params() {
     if(!urlHasQuestionMark) {
         window.redirect = window.redirect + "?redir=1";
     }
+	//alert(window.redirect);
 }
 
   
