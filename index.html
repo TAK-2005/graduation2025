@@ -275,7 +275,22 @@ You can edit the instructions text.
     </div>
   {{/posts}}  
 </script>
+<!--ここから追加：リダイレクト用-->
+ <script>
+    function finishTask() {
+      const params = new URLSearchParams(window.location.search);
+      const condition = params.get("c");
+      const participantID = params.get("p");
 
+      const redirectURL =
+        "https://osakashakaishinri.qualtrics.com/jfe/form/SV_XXXXXXXX" +
+        "?RETURN_COND=" + condition +
+        "&RETURN_PID=" + participantID;
 
+      window.location.href = redirectURL;
+    }
+  </script>
+<!--ここまで追加-->
+	
 </body>
 </html>
