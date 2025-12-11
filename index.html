@@ -275,7 +275,7 @@ You can edit the instructions text.
     </div>
   {{/posts}}  
 </script>
-<!--ここから追加：リダイレクト用-->
+<!--ここから追加：リダイレクト用（URLはプレビューのため、書き換える）-->
  <script>
     function finishTask() {
       const params = new URLSearchParams(window.location.search);
@@ -283,7 +283,7 @@ You can edit the instructions text.
       const participantID = params.get("p");
 
       const redirectURL =
-        "https://osakashakaishinri.qualtrics.com/jfe/form/SV_XXXXXXXX" +
+        "https://osakashakaishinri.qualtrics.com/jfe/preview/previewId/f9dfef6f-813b-434e-a7fc-56452861ef4a/SV_50GU6ZV97rbZEX4?Q_CHL=preview&Q_SurveyVersionID=current" +
         "?RETURN_COND=" + condition +
         "&RETURN_PID=" + participantID;
 
