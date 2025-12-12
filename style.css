@@ -45,7 +45,7 @@ img.avatar {
 	width: 120px;
 	font-size: 9pt;
 	text-align: left;
-	padding-left: 15px; /* text to avatar distance */
+	padding-left: 15px;
 }
 
 .tophalf h3 {
@@ -117,9 +117,6 @@ span.badge.badge-custom.userslikes {
 	z-index: 1; 
 }
 
-/*
- * via http://charliepark.org/bootstrap_buttons/
- */ 
 .btn-custom {
   background-color: hsl(195, 60%, 35%) !important;
   padding: 3px;
@@ -244,4 +241,178 @@ span.cntr.label.label-info {
 	top: 40px;
 	text-align:left; 
   color: #858585;	
+}
+
+/* ================================================
+   *** 追加: スマホ対応のレスポンシブデザイン ***
+   ================================================ */
+
+/* タブレット以下（768px以下）の設定 */
+@media screen and (max-width: 768px) {
+  body {
+    padding-top: 15px;
+  }
+  
+  .container {
+    width: 100% !important;
+    padding: 0 10px;
+  }
+  
+  .instr {
+    padding-left: 20px !important;
+    padding-top: 50px !important;
+    padding-right: 20px;
+  }
+  
+  /* プロフィールカードを縦1列に配置 */
+  .entry {
+    width: 100% !important;
+    max-width: 400px;
+    float: none !important;
+    margin: 15px auto !important;
+    display: block;
+  }
+  
+  div.masonry {
+    width: 100% !important;
+  }
+  
+  /* Masonryレイアウトを無効化して縦並びに */
+  #task {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* プロフィール内のレイアウト調整 */
+  .tophalf {
+    padding: 12px;
+  }
+  
+  .tophalf img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  
+  .tophalf h3 {
+    font-size: 16px;
+    margin-left: 70px;
+    margin-top: 20px;
+  }
+  
+  .tophalf .main {
+    width: calc(100% - 80px) !important;
+    font-size: 8pt;
+    padding-left: 10px;
+  }
+  
+  div.main {
+    width: calc(100% - 80px) !important;
+    margin-left: 0px;
+  }
+  
+  /* いいねボタンとカウンターの調整 */
+  .bottomhalf {
+    font-size: 12px;
+  }
+  
+  .btn-like {
+    font-size: 11px;
+    padding: 2px 5px !important;
+  }
+  
+  /* カウントダウンタイマーの位置を中央に */
+  #countdown {
+    position: static !important;
+    float: none !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f5f6fa;
+    border-radius: 5px;
+  }
+  
+  /* 次へボタンを中央配置 */
+  #final-continue {
+    width: 90%;
+    max-width: 300px;
+    margin: 20px auto;
+    display: block;
+    padding: 12px !important;
+    font-size: 16px;
+  }
+  
+  /* アバター選択画面 */
+  #avatar .avatar {
+    width: 70px !important;
+    height: 70px !important;
+    margin: 8px !important;
+  }
+  
+  #submit_avatar {
+    float: none !important;
+    margin: 20px auto !important;
+    display: block;
+  }
+  
+  /* テキスト入力欄を画面幅に合わせる */
+  #description {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+  
+  #username {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+  
+  /* ボタン全般の調整 */
+  button[type="submit"] {
+    padding: 10px 20px !important;
+    font-size: 14px;
+  }
+}
+
+/* スマホ（480px以下）の追加最適化 */
+@media screen and (max-width: 480px) {
+  .entry {
+    max-width: 100%;
+  }
+  
+  .tophalf h3 {
+    font-size: 14px;
+    margin-left: 65px;
+    margin-top: 15px;
+  }
+  
+  .tophalf img {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  
+  .tophalf .main {
+    font-size: 7.5pt;
+    width: calc(100% - 65px) !important;
+  }
+  
+  div.main {
+    width: calc(100% - 65px) !important;
+  }
+  
+  #avatar .avatar {
+    width: 60px !important;
+    height: 60px !important;
+    margin: 5px !important;
+  }
+  
+  .badge-custom {
+    font-size: 14px;
+  }
+  
+  #countdown {
+    font-size: 13px;
+  }
 }
