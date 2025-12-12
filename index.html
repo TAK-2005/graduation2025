@@ -67,23 +67,6 @@ You can edit this text using basic HTML elements for styling (e.g., <br>, <h3>).
   <button type="submit" id="submit_intro">次へ</button>
 </div>
 
-<!--- <h3>Welcome to this study</h3>
-
-  You will complete a number of simple tasks, together with other people, <br>
-  with whom you will be connected via the internet. 
-  <br><br>
-  First, all participants in the study will select personal "avatars" and <br>
-  write short texts to introduce themselves.
-  <br><br>
-  Before beginning the tasks, you will spend 3 minutes with the other <br>
-  people. During this time, you will be able to read and react to <br>
-  each-other's brief introductions.
-  <br><br>
-  Specific instructions will follow.<br><br>
-  <b>Thank you!</b><br><br>
-  <button type="submit" id="submit_intro">Continue</button>
-  -->
-
 
 
 <div id="name" style="display:none;" class="instr">
@@ -103,10 +86,6 @@ You can edit the instructions text for entering usernames below.
 	<button type="submit"  id="submit_username">次へ</button>
 </div>
 
-<!--- <h3>Please enter your name</h3>
-	Could be your first name, nickname, or initials<br><br>
-  --->
-
 
 <div id="avatar" style="display:none;">	
 <!-- 
@@ -125,10 +104,6 @@ You can edit the instructions text. The text "Your choice of avatar will not be 
 	<br><br>
 </div>	
 
-<!--- 	<h3>Please select an avatar</h3>
-	This avatar will represent you during the group task, but will not be linked to any of your responses. <br>Your choice of avatar will not be recorded or analyzed.
-	<br><br>
-  -->
 
 <div id="text" style="display:none;" class="instr">	
 <!-- 
@@ -147,15 +122,6 @@ You can edit the instructions text.
 	<button type="submit" id="submit_text">次へ</button>
 </div>	
 
-<!---<h3>Please introduce yourself </h3>
-	Please write a paragraph in which you introduce yourself to the rest of the group. <br>
-	Write something you would like to tell about yourself - anything you want to share.
-	<br><br>	
-	<textarea id="description" autocomplete="off" /></textarea><br>
-	<span id="count">Characters left: 400</span><br><br>
-	<button type="submit" id="submit_text">Submit</button>
-</div>	
--->
 
 <div id="fb_intro" style="display:none;" class="instr">
 <!-- 
@@ -179,20 +145,6 @@ You can edit the instructions text. The prompt to try and form an impression of 
   <button type="submit"  id="submit_fb_intro">ログイン</button>
 </div>
 
-<!---<h3>Group Introduction</h3>
-  Soon after connecting, you should be able to see the other people's descriptions. <br>
-  You can read and react to the short introduction they wrote about themselves, by <br>
-  clicking a "like" button, similar to the "like" button on Facebook ("favorite" on Twitter,<br> 
-  &hearts; in Tumblr and Instagram, etc.) <br>
-  <br>
-  Even though your interaction is minimal, please try to form an impression of the <br>
-  people in the group. Try to imagine them in real life - how they might look <br>
-  or sound, what kind of people they are, how you would get along with them.
-  <br><br>The task will last 3 minutes and is very important to the study, so please be attentive,
-  <br>without switching pages, or doing unrelated tasks. Questions about the other people <br>might follow.
-  <br><br><b>If these instructions are clear, you can proceed to log in.</b><br>
-  <br>
-  -->
 
 <div id="fb_login" style="display:none;" class="instr">
   <h3>接続中</h3>
@@ -204,9 +156,6 @@ You can edit the instructions text. The prompt to try and form an impression of 
   </div>
 </div>
 
-<!---<h3>Establishing connection</h3>
-  Please wait while you are being connected to the other participants in your group.<br><br>
--->
 
 <!-- 
 /* 
@@ -243,7 +192,7 @@ You can edit the instructions text.
     </div>	
 
     <div class="bottomhalf">
-    	Likes <span class="badge badge-custom userslikes" data-likes="{{likes}}" data-usernames="{{usernames}}">0</span>
+    	いいね <span class="badge badge-custom userslikes" data-likes="{{likes}}" data-usernames="{{usernames}}">0</span>
     </div>
     </div>
 
