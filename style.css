@@ -1,5 +1,6 @@
 body { 
-  padding-top: 30px;  
+  padding-top: 30px;
+  overflow-x: hidden;
 }
 
 .container {
@@ -101,6 +102,7 @@ button.btn.btn-primary {
  html body {
     color: #000000;
     background-color: #ebedf5;
+    overflow-x: hidden;
 }
 #final-continue {
     margin-top: 20px;
@@ -244,32 +246,60 @@ span.cntr.label.label-info {
 }
 
 /* ================================================
-   *** 追加: スマホ対応のレスポンシブデザイン ***
+   *** スマホ対応のレスポンシブデザイン ***
+   PC（769px以上）では従来通りのレイアウト
+   スマホ（768px以下）では縦1列レイアウト
+   横スクロール完全防止
    ================================================ */
 
 /* タブレット以下（768px以下）の設定 */
 @media screen and (max-width: 768px) {
+  /* 横スクロール完全防止 */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
   body {
-    padding-top: 15px;
+    padding-top: 10px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
   .container {
     width: 100% !important;
     padding: 0 10px;
+    margin: 0;
   }
   
+  /* イントロ画面などのテキストを読みやすく */
   .instr {
-    padding-left: 20px !important;
-    padding-top: 50px !important;
-    padding-right: 20px;
+    padding-left: 15px !important;
+    padding-top: 30px !important;
+    padding-right: 15px !important;
+    font-size: 15px;
+    line-height: 1.8;
+    width: 100%;
+  }
+  
+  .instr h3 {
+    font-size: 20px !important;
+    margin-bottom: 15px;
   }
   
   /* プロフィールカードを縦1列に配置 */
   .entry {
     width: 100% !important;
-    max-width: 400px;
+    max-width: 100% !important;
     float: none !important;
-    margin: 15px auto !important;
+    margin: 15px 0 !important;
     display: block;
   }
   
@@ -279,14 +309,15 @@ span.cntr.label.label-info {
   
   /* Masonryレイアウトを無効化して縦並びに */
   #task {
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
+    display: block !important;
+    width: 100% !important;
+    padding: 0 10px;
   }
   
   /* プロフィール内のレイアウト調整 */
   .tophalf {
     padding: 12px;
+    width: 100%;
   }
   
   .tophalf img {
@@ -298,62 +329,98 @@ span.cntr.label.label-info {
     font-size: 16px;
     margin-left: 70px;
     margin-top: 20px;
+    word-wrap: break-word;
   }
   
   .tophalf .main {
-    width: calc(100% - 80px) !important;
-    font-size: 8pt;
+    width: calc(100% - 75px) !important;
+    font-size: 13px;
     padding-left: 10px;
+    line-height: 1.5;
+    word-wrap: break-word;
   }
   
   div.main {
-    width: calc(100% - 80px) !important;
+    width: calc(100% - 75px) !important;
     margin-left: 0px;
+  }
+  
+  div.main p {
+    font-size: 13px;
+    line-height: 1.5;
+    word-wrap: break-word;
   }
   
   /* いいねボタンとカウンターの調整 */
   .bottomhalf {
-    font-size: 12px;
+    font-size: 14px;
+    padding: 8px;
+    width: 100%;
   }
   
   .btn-like {
-    font-size: 11px;
-    padding: 2px 5px !important;
+    font-size: 13px;
+    padding: 4px 8px !important;
   }
   
-  /* カウントダウンタイマーの位置を中央に */
-  #countdown {
+  /* *** 修正: カウントダウンタイマーは#taskページでのみ表示 *** */
+  /* #taskページ内のカウントダウンを見やすく調整 */
+  #task #countdown {
     position: static !important;
     float: none !important;
     width: 100% !important;
     text-align: center !important;
     margin-bottom: 20px;
-    padding: 10px;
+    padding: 15px;
     background-color: #f5f6fa;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+    top: 0 !important;
+    box-sizing: border-box;
   }
   
-  /* 次へボタンを中央配置 */
-  #final-continue {
+  #task #countdown span.cntr {
+    font-size: 22px !important;
+    padding: 8px 16px;
+    display: block;
+    margin-top: 10px;
+  }
+  
+  /* 次へボタンを大きく中央配置（#taskページ内のみ） */
+  #task #final-continue {
     width: 90%;
     max-width: 300px;
-    margin: 20px auto;
+    margin: 25px auto;
     display: block;
-    padding: 12px !important;
-    font-size: 16px;
+    padding: 16px !important;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
   }
   
   /* アバター選択画面 */
+  .avatars {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+  
   #avatar .avatar {
     width: 70px !important;
     height: 70px !important;
-    margin: 8px !important;
+    margin: 6px !important;
   }
   
   #submit_avatar {
     float: none !important;
     margin: 20px auto !important;
     display: block;
+    width: 80%;
+    max-width: 250px;
+    padding: 14px !important;
+    font-size: 16px;
   }
   
   /* テキスト入力欄を画面幅に合わせる */
@@ -361,25 +428,80 @@ span.cntr.label.label-info {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box;
+    font-size: 15px;
+    padding: 10px;
   }
   
   #username {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box;
+    font-size: 16px;
+    padding: 12px;
   }
   
   /* ボタン全般の調整 */
   button[type="submit"] {
-    padding: 10px 20px !important;
+    padding: 14px 24px !important;
+    font-size: 16px;
+    min-width: 120px;
+    box-sizing: border-box;
+  }
+  
+  #submit_intro, #submit_username, #submit_text, 
+  #submit_fb_intro, #submit_fb_login {
+    display: block;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 250px;
+    padding: 14px !important;
+    font-size: 16px;
+  }
+  
+  /* 文字数カウンター */
+  #count {
     font-size: 14px;
+    display: block;
+    margin-top: 8px;
+  }
+  
+  /* stickyエリアの調整（横スクロール防止） */
+  #sticky {
+    width: 100% !important;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+  }
+  
+  /* othersエリアの調整 */
+  #others {
+    margin-top: 20px;
+    width: 100%;
   }
 }
 
 /* スマホ（480px以下）の追加最適化 */
 @media screen and (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .instr {
+    font-size: 14px;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  
+  .instr h3 {
+    font-size: 18px !important;
+  }
+  
+  .container {
+    padding: 0 8px;
+  }
+  
   .entry {
-    max-width: 100%;
+    margin: 12px 0 !important;
   }
   
   .tophalf h3 {
@@ -394,12 +516,16 @@ span.cntr.label.label-info {
   }
   
   .tophalf .main {
-    font-size: 7.5pt;
-    width: calc(100% - 65px) !important;
+    font-size: 12px;
+    width: calc(100% - 60px) !important;
   }
   
   div.main {
-    width: calc(100% - 65px) !important;
+    width: calc(100% - 60px) !important;
+  }
+  
+  div.main p {
+    font-size: 12px;
   }
   
   #avatar .avatar {
@@ -412,7 +538,17 @@ span.cntr.label.label-info {
     font-size: 14px;
   }
   
-  #countdown {
+  #task #countdown {
     font-size: 13px;
+    padding: 12px;
+  }
+  
+  #task #countdown span.cntr {
+    font-size: 20px !important;
+  }
+  
+  #task #final-continue {
+    font-size: 16px;
+    padding: 14px !important;
   }
 }
