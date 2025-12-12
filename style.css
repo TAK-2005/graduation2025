@@ -264,8 +264,6 @@ span.cntr.label.label-info {
   
   body {
     padding-top: 10px;
-    font-size: 15px;
-    line-height: 1.6;
   }
   
   * {
@@ -279,19 +277,17 @@ span.cntr.label.label-info {
     margin: 0;
   }
   
-  /* イントロ画面などのテキストを読みやすく */
+  /* イントロ画面などのテキスト（行間は元のまま） */
   .instr {
     padding-left: 15px !important;
     padding-top: 30px !important;
     padding-right: 15px !important;
-    font-size: 15px;
-    line-height: 1.8;
     width: 100%;
   }
   
   .instr h3 {
-    font-size: 20px !important;
-    margin-bottom: 15px;
+    font-size: 18px !important;
+    margin-bottom: 10px;
   }
   
   /* プロフィールカードを縦1列に配置 */
@@ -334,9 +330,8 @@ span.cntr.label.label-info {
   
   .tophalf .main {
     width: calc(100% - 75px) !important;
-    font-size: 13px;
+    font-size: 9pt;
     padding-left: 10px;
-    line-height: 1.5;
     word-wrap: break-word;
   }
   
@@ -346,55 +341,52 @@ span.cntr.label.label-info {
   }
   
   div.main p {
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 9pt;
     word-wrap: break-word;
   }
   
   /* いいねボタンとカウンターの調整 */
   .bottomhalf {
-    font-size: 14px;
+    font-size: 12px;
     padding: 8px;
     width: 100%;
   }
   
   .btn-like {
-    font-size: 13px;
-    padding: 4px 8px !important;
+    font-size: 11px;
+    padding: 3px 6px !important;
   }
   
-  /* *** 修正: カウントダウンタイマーは#taskページでのみ表示 *** */
-  /* #taskページ内のカウントダウンを見やすく調整 */
+  /* *** 重要: カウントダウンタイマーは#taskページでのみ表示・調整 *** */
   #task #countdown {
     position: static !important;
     float: none !important;
     width: 100% !important;
     text-align: center !important;
-    margin-bottom: 20px;
-    padding: 15px;
+    margin-bottom: 15px;
+    padding: 12px;
     background-color: #f5f6fa;
     border-radius: 8px;
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 13px;
     top: 0 !important;
     box-sizing: border-box;
   }
   
   #task #countdown span.cntr {
-    font-size: 22px !important;
-    padding: 8px 16px;
+    font-size: 20px !important;
+    padding: 6px 12px;
     display: block;
-    margin-top: 10px;
+    margin-top: 8px;
   }
   
   /* 次へボタンを大きく中央配置（#taskページ内のみ） */
   #task #final-continue {
-    width: 90%;
-    max-width: 300px;
-    margin: 25px auto;
+    width: 85%;
+    max-width: 280px;
+    margin: 20px auto;
     display: block;
-    padding: 16px !important;
-    font-size: 18px;
+    padding: 14px !important;
+    font-size: 16px;
     font-weight: bold;
     border-radius: 8px;
   }
@@ -417,10 +409,10 @@ span.cntr.label.label-info {
     float: none !important;
     margin: 20px auto !important;
     display: block;
-    width: 80%;
-    max-width: 250px;
-    padding: 14px !important;
-    font-size: 16px;
+    width: 75%;
+    max-width: 220px;
+    padding: 12px !important;
+    font-size: 15px;
   }
   
   /* テキスト入力欄を画面幅に合わせる */
@@ -428,7 +420,7 @@ span.cntr.label.label-info {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box;
-    font-size: 15px;
+    font-size: 14px;
     padding: 10px;
   }
   
@@ -436,31 +428,31 @@ span.cntr.label.label-info {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box;
-    font-size: 16px;
-    padding: 12px;
+    font-size: 15px;
+    padding: 10px;
   }
   
   /* ボタン全般の調整 */
   button[type="submit"] {
-    padding: 14px 24px !important;
-    font-size: 16px;
-    min-width: 120px;
+    padding: 12px 20px !important;
+    font-size: 15px;
+    min-width: 100px;
     box-sizing: border-box;
   }
   
   #submit_intro, #submit_username, #submit_text, 
   #submit_fb_intro, #submit_fb_login {
     display: block;
-    margin: 20px auto;
-    width: 80%;
-    max-width: 250px;
-    padding: 14px !important;
-    font-size: 16px;
+    margin: 15px auto;
+    width: 75%;
+    max-width: 220px;
+    padding: 12px !important;
+    font-size: 15px;
   }
   
   /* 文字数カウンター */
   #count {
-    font-size: 14px;
+    font-size: 13px;
     display: block;
     margin-top: 8px;
   }
@@ -482,22 +474,17 @@ span.cntr.label.label-info {
 
 /* スマホ（480px以下）の追加最適化 */
 @media screen and (max-width: 480px) {
-  body {
-    font-size: 14px;
+  .container {
+    padding: 0 8px;
   }
   
   .instr {
-    font-size: 14px;
     padding-left: 10px !important;
     padding-right: 10px !important;
   }
   
   .instr h3 {
-    font-size: 18px !important;
-  }
-  
-  .container {
-    padding: 0 8px;
+    font-size: 16px !important;
   }
   
   .entry {
@@ -516,7 +503,7 @@ span.cntr.label.label-info {
   }
   
   .tophalf .main {
-    font-size: 12px;
+    font-size: 8pt;
     width: calc(100% - 60px) !important;
   }
   
@@ -525,7 +512,7 @@ span.cntr.label.label-info {
   }
   
   div.main p {
-    font-size: 12px;
+    font-size: 8pt;
   }
   
   #avatar .avatar {
@@ -535,20 +522,20 @@ span.cntr.label.label-info {
   }
   
   .badge-custom {
-    font-size: 14px;
+    font-size: 13px;
   }
   
   #task #countdown {
-    font-size: 13px;
-    padding: 12px;
+    font-size: 12px;
+    padding: 10px;
   }
   
   #task #countdown span.cntr {
-    font-size: 20px !important;
+    font-size: 18px !important;
   }
   
   #task #final-continue {
-    font-size: 16px;
-    padding: 14px !important;
+    font-size: 15px;
+    padding: 12px !important;
   }
 }
