@@ -117,7 +117,7 @@ $(function() {
   			error = 1;
   			errormsg = 'テキストを入力してください。';
   		}
-  		if($('#description').val() !== "" && $('#description').val().length < 100) {
+  		if($('#description').val() !== "" && $('#description').val().length < 50) {
 		
   			error = 1;
   			errormsg = 'もう少し書いてください。';
