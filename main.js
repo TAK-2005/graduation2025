@@ -107,7 +107,7 @@ $(function() {
   	$('#text').show();
 
   	$("#description").keyup(function(){
-  	  $("#count").text("残りの文字数: " + (300 - $(this).val().length));
+  	  $("#count").text("現在の文字数: " + $(this).val().length));
   	});
 
   	$('#submit_text').on('click',function() {
@@ -414,3 +414,17 @@ function get_params() {
   init_intro();
 
 });
+
+// 実験終了時に呼び出す関数
+function completeExperiment() {
+    console.log('実験完了：クアルトリクスに通知を送信');
+    
+    // 親ウィンドウ(クアルトリクス)にメッセージを送信
+    if (window.parent !== window) {
+        window.parent.postMessage('ostracism_complete', '*');
+    }
+}
+
+// 最後の質問の送信完了後に呼び出してください
+// 例：最後のsubmitボタンのクリック処理内で
+completeExperiment();
