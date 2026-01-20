@@ -53,17 +53,12 @@ If you don't have experience with programming, it is important that you alter on
 You can edit this text using basic HTML elements for styling (e.g., <br>, <h3>).
 
 */ 
---> <h3>実験へのご参加ありがとうございます。</h3>
-
-  あなたは、インターネットを通じてつながった他の人々と一緒に、いくつかの簡単な課題を行います。
-  <br><br>
-  まず、研究に参加する全員が、自分の「アバター」を選び、自己紹介の短い文章を書きます。
-  <br><br>
-  課題を始める前に、他の参加者と3分間過ごします。<br>この間、お互いの簡単な自己紹介を読み合い、反応することができます。
-  <br><br>
-  具体的な指示は後で示されます。<br><br>
-  <b>ありがとうございます!</b><br><br>
+--> <h3>この課題では、オンライン上で簡単なプロフィールを作成し、他の参加者が作成したプロフィールを閲覧していただきます。</h3>
+具体的な操作や指示は、画面の案内に従って進めてください。
+<br><br>
+  <b>画面上の「次へ」を押してください。</b><br><br>
   <button type="submit" id="submit_intro">次へ</button>
+
 </div>
 
 <!--- <h3>Welcome to this study</h3>
@@ -117,8 +112,9 @@ You can edit the instructions text. The text "Your choice of avatar will not be 
 
 */ 
 -->	<h3>アバターを選んでください。</h3>
-	このアバターはグループ課題中のあなたを表しますが、あなたの解答とは結び付きません。<br>選んだアバターは記録・分析されません。
-	<br><br>
+このアバターはプロフィール上であなたの顔写真の代わりとして表示され、他の参加者にも共有されますが、あなたの解答とは結び付きません。<br>
+選んだアバターは、記録・分析されません。<br><br>
+
 	<div class="avatars"></div>
 	<br><button type="submit"  id="submit_avatar">次へ</button>
 	<br><br>
@@ -138,9 +134,10 @@ You can edit the instructions text. The text "Your choice of avatar will not be 
 You can edit the instructions text. 
 
 */ 
--->	<h3>自己紹介をしてください。 </h3>
-	グループのメンバーに向けて、自分を紹介する文章を1段落で書いてください。<br>
-  自分について伝えたいこと、共有したいことなら何でも構いません。<br><br>	
+-->	<h3>プロフィールを入力してください。 </h3>
+これから、数名の参加者からなるグループが作られます。<br>
+グループの参加者が閲覧するプロフィールとして、短い文章を50字以上100字以内で書いてください。<br>
+自分について伝えたいこと、共有したいことなら何でも構いません。<br><br>
 	<textarea id="description" autocomplete="off" /></textarea><br>
 	<span id="count">現在の文字数: 0</span><br><br>
 	<button type="submit" id="submit_text">次へ</button>
@@ -165,16 +162,18 @@ You can edit the instructions text.
 You can edit the instructions text. The prompt to try and form an impression of the other players is recommended in all ostacism paradigms. Defining the action of "liking" is also recommended. The information regarding task duration can be adjusted to match the actual duration you have set.
 
 */ 
--->  <h3>グループ紹介</h3>
-  接続後すぐに、他の参加者の自己紹介を見ることができるようになります。<br>
-  彼らが書いた短い自己紹介を読み、「いいね」ボタンをクリックして反応することができます<br>
-  （Facebookの「いいね！」、Instagramの「♡」などと同じような機能です） <br><br>
-　たとえやり取りが最小限でも、グループの他の人々について印象を持つようにしてください。<br>
-  実際の生活でどのように見えるか、どんな声をしているか、どんな人なのか、どのように関わるかを想像してみてください。
-  <br><br>この課題は3分間行われ、研究にとって非常に重要です。<br>
-  ページを切り替えたり、関係のない作業をせず、注意を払って取り組んでください。<br>
-  あとで、他の人についての質問がある場合があります。<br><br>
-  <b>これらの指示が理解できたら、ログインを進めてください。</b><br><br>
+-->   <h3>プロフィール閲覧</h3>
+ 接続後、他の参加者のプロフィールが表示されます。<br>
+ プロフィールを読み、関心を持った場合には「いいね」ボタンをクリックして反応することができます。<br>
+  （SNSでよく見られる「いいね」機能と同様の操作です。） <br><br>
+
+表示されるプロフィールを読んで、それぞれの参加者について理解を深めてください。<br>
+限られた情報からでも、他の参加者がどのような人かについて、自分なりの印象を持つようにしてください。<br><br>
+
+  <br><br>この課題は一定時間行われます。<br>
+  ページを切り替えたり、他の作業を行わず、画面の内容に注意を向けて取り組んでください。<br>
+後の課題で、他の参加者について質問される場合があります。<br><br>
+<b>指示を理解したら、ログインしてください。</b><br><br>
   <button type="submit"  id="submit_fb_intro">ログイン</button>
 </div>
 
@@ -217,7 +216,7 @@ You can edit the instructions text.
 */ 
 -->
 <div id="task" style="display:none;">
-	<div id="countdown"><span class="secs" style="display: none;"></span>誰かの自己紹介が気に入ったら、「いいね」をクリックできます。
+	<div id="countdown"><span class="secs" style="display: none;"></span>誰かのプロフィールが気に入ったら、「いいね」をクリックできます。
   <br><br>残り時間:<br><span id="timer" class="cntr label label-info"></span>
 	<br>
 	<button type="submit" id='final-continue' style="display:none;">次へ</button>	
