@@ -97,7 +97,7 @@ $(function() {
       }
   		if(!isValidName(uname)) {
   			error = 1;
-  			errormsg = '文字のみを入力してください（スペースや数字は使わないでください）。';
+  			errormsg = '文字のみを入力してください(スペースや数字は使わないでください)。';
   		}  		
 
   		if(error == 0) {
@@ -317,6 +317,11 @@ $(function() {
 
     $('#timer').text('00:00');
     
+    // ========================================
+    // 【追加】クアルトリクスに実験完了を通知
+    // ========================================
+    notifyQualtrics();
+    
     $('#final-continue').on('click', function() {
 
       // Redirect link
@@ -338,7 +343,7 @@ function get_params() {
         console.log("Random Condition:", window.condition);
     }
 
-    // 【2】URLに c がある場合は、その値（1 または 2）を使う
+    // 【2】URLに c がある場合は、その値（1 または 2)を使う
     if(window.QueryString.c !== undefined && !isNaN(parseInt(window.QueryString.c))) {
         const c = parseInt(window.QueryString.c);
         if(c === 1 || c === 2) {
@@ -473,6 +478,21 @@ function get_params() {
       });
     });
   };
+
+  // ========================================
+  // 【追加】クアルトリクス連携：実験完了通知関数
+  // ========================================
+  function notifyQualtrics() {
+    console.log('=== 実験完了：クアルトリクスに通知 ===');
+    
+    // 親ウィンドウ(クアルトリクス)にメッセージを送信
+    if (window.parent !== window) {
+      window.parent.postMessage('ostracism_complete', '*');
+      console.log('通知送信完了');
+    } else {
+      console.log('iframe内ではないため通知をスキップ');
+    }
+  }
 
   // Prevent that participants accidentally exit the experiment by disabling F5 and backspace keys
   shortcut.add("f5",function() {});  
