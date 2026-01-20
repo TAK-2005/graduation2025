@@ -145,38 +145,33 @@ $(function() {
 
   // **Slide:** **Description**   
   function init_text() {
-  	$('#text').show();
-
-  	$("#description").keyup(function(){
-  	  $("#count").text("残りの文字数: " + (300 - $(this).val().length));
-  	});
-
-  	$('#submit_text').on('click',function() {
-
-  		var error = 0;
-  		if($('#description').val() == "") {
-  			error = 1;
-  			errormsg = 'テキストを入力してください。';
-  		}
-  		if($('#description').val() !== "" && $('#description').val().length < 100) {
-		
-  			error = 1;
-  			errormsg = 'もう少し書いてください。';
-			}
-  		if($('#description').val().length > 301) {
-  		
-  			error = 1;
-  			errormsg = 'テキストを少なめに入力してください。';
-  		}  		
-  		if(error == 0) {
-  			$('#text').hide();
-  			window.description = $('#description').val();
-    			init_fb_intro();  			
-    		} else {
-    			alertify.log(errormsg,"error");
-    		}
-  	});  	
-  }
+  $('#text').show();
+  $("#description").keyup(function(){
+    $("#count").text("現在の文字数: " + $(this).val().length);
+  });
+  $('#submit_text').on('click',function() {
+    var error = 0;
+    if($('#description').val() == "") {
+      error = 1;
+      errormsg = 'テキストを入力してください。';
+    }
+    if($('#description').val() !== "" && $('#description').val().length < 50) {
+      error = 1;
+      errormsg = 'もう少し書いてください。';
+    }
+    if($('#description').val().length > 100) {
+      error = 1;
+      errormsg = 'テキストを少なめに入力してください。';
+    }
+    if(error == 0) {
+      $('#text').hide();
+      window.description = $('#description').val();
+      init_fb_intro();
+    } else {
+      alertify.log(errormsg,"error");
+    }
+  });
+}
 
 
   // **Slide:** **Instructions**   
