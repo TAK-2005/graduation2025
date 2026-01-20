@@ -305,7 +305,6 @@ span.cntr.label.label-info {
   
   /* Masonryレイアウトを無効化して縦並びに */
   #task {
-    display: block !important;
     width: 100% !important;
     padding: 0 10px;
   }
