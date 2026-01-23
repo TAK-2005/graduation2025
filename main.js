@@ -313,22 +313,20 @@ $(function() {
     
     $(window).unbind('beforeunload');
     
-    $('#final-continue').show();
+ // $('#final-continue').show(); // この行をコメントアウト
 
     $('#timer').text('00:00');
-    
-    // ========================================
-    // 【追加】クアルトリクスに実験完了を通知
-    // ========================================
-    notifyQualtrics();
-    
+		
+ // 以下のボタンクリックイベント部分をコメントアウト 
+/*
     $('#final-continue').on('click', function() {
 
       // Redirect link
       location.href = window.redirect+'&p='+window.participant+'&c='+window.condition+'&u='+encodeURI(window.username)+'&av='+window.avatarexport+'&d='+encodeURI(window.description);
 
     });
-    
+ */
+		
     },window.settings.tasklength); // timing for task
 
   }
