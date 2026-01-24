@@ -349,12 +349,18 @@ function get_params() {
         }
     }
 
-    // participant number
-    if(window.QueryString.p !== undefined && !isNaN(parseInt(window.QueryString.p))) {
-      window.participant = parseInt(window.QueryString.p);
-    } else {
-      window.participant = 0;
-    }    
+// participant number（文字列対応）
+if(window.QueryString.p !== undefined && window.QueryString.p !== "") {
+  window.participant = window.QueryString.p;  // 文字列のまま保存
+} else {
+  window.participant = "0"; // デフォルト値も文字列に
+}
+    //参加者IDの以前の設定コード participant number
+    // if(window.QueryString.p !== undefined && !isNaN(parseInt(window.QueryString.p))) {
+    //   window.participant = parseInt(window.QueryString.p);
+    // } else {
+    //  window.participant = 0;
+    // }    
 
     // redirect
     if(window.QueryString.redirect !== undefined && window.QueryString.redirect !== "") {
