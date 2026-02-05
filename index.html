@@ -139,10 +139,84 @@ You can edit the instructions text.
 これから、数名の参加者からなるグループが作られます。<br>
 グループの参加者が閲覧するプロフィールとして、短い文章を50字以上100字以内で書いてください。<br>
 自分について伝えたいこと、共有したいことなら何でも構いません。<br><br>
-	<textarea id="description" autocomplete="off" /></textarea><br>
-	<span id="count">現在の文字数: 0</span><br><br>
-	<button type="submit" id="submit_text">次へ</button>
-</div>	
+
+  <label for="age">年齢</label>
+<input
+  type="number"
+  id="age"
+  min="10"
+  max="100"
+  step="1"
+  placeholder="例：20"
+/>
+<br><br>
+
+<label for="hometown">居住地</label>
+<select id="hometown">
+  <option value="">選択してください</option>
+  <option value="北海道">北海道</option>
+  <option value="青森県">青森県</option>
+  <option value="岩手県">岩手県</option>
+  <option value="宮城県">宮城県</option>
+  <option value="秋田県">秋田県</option>
+  <option value="山形県">山形県</option>
+  <option value="福島県">福島県</option>
+  <option value="茨城県">茨城県</option>
+  <option value="栃木県">栃木県</option>
+  <option value="群馬県">群馬県</option>
+  <option value="埼玉県">埼玉県</option>
+  <option value="千葉県">千葉県</option>
+  <option value="東京都">東京都</option>
+  <option value="神奈川県">神奈川県</option>
+  <option value="新潟県">新潟県</option>
+  <option value="富山県">富山県</option>
+  <option value="石川県">石川県</option>
+  <option value="福井県">福井県</option>
+  <option value="山梨県">山梨県</option>
+  <option value="長野県">長野県</option>
+  <option value="岐阜県">岐阜県</option>
+  <option value="静岡県">静岡県</option>
+  <option value="愛知県">愛知県</option>
+  <option value="三重県">三重県</option>
+  <option value="滋賀県">滋賀県</option>
+  <option value="京都府">京都府</option>
+  <option value="大阪府">大阪府</option>
+  <option value="兵庫県">兵庫県</option>
+  <option value="奈良県">奈良県</option>
+  <option value="和歌山県">和歌山県</option>
+  <option value="鳥取県">鳥取県</option>
+  <option value="島根県">島根県</option>
+  <option value="岡山県">岡山県</option>
+  <option value="広島県">広島県</option>
+  <option value="山口県">山口県</option>
+  <option value="徳島県">徳島県</option>
+  <option value="香川県">香川県</option>
+  <option value="愛媛県">愛媛県</option>
+  <option value="高知県">高知県</option>
+  <option value="福岡県">福岡県</option>
+  <option value="佐賀県">佐賀県</option>
+  <option value="長崎県">長崎県</option>
+  <option value="熊本県">熊本県</option>
+  <option value="大分県">大分県</option>
+  <option value="宮崎県">宮崎県</option>
+  <option value="鹿児島県">鹿児島県</option>
+  <option value="沖縄県">沖縄県</option>
+</select><br><br>
+
+  趣味：<br>
+  <input type="text" id="hobby"><br><br>
+
+  最近一番楽しかったこと：<br>
+  <input type="text" id="recentFun"><br><br>
+
+<label for="freeText">その他伝えたいこと（50文字以内）</label>
+<textarea id="freeText" maxlength="50"></textarea>
+<br><br>
+
+  <!-- ボタンIDは絶対に変えない -->
+  <button type="submit" id="submit_text">次へ</button>
+</div>
+
 
 <!---<h3>Please introduce yourself </h3>
 	Please write a paragraph in which you introduce yourself to the rest of the group. <br>
@@ -217,10 +291,20 @@ You can edit the instructions text.
 */ 
 -->
 <div id="task" style="display:none;">
-	<div id="countdown"><span class="secs" style="display: none;"></span>誰かのプロフィールが気に入ったら、「いいね」をクリックできます。
-  <br><br>残り時間:<br><span id="timer" class="cntr label label-info"></span>
+
+	<div id="countdown">
+    <span class="secs" style="display: none;"></span>
+    誰かのプロフィールが気に入ったら、「いいね」をクリックできます。
+    <br><br>
+    残り時間:<br>
+    <span id="timer" class="cntr label label-info"></span>
 	</div>
+
+  <!-- ★ここを追加 -->
+  <div id="others"></div>
+
 </div>
+
 
 
 <script type="template/text" id="usertmp">
@@ -233,8 +317,8 @@ You can edit the instructions text.
     	<h3>{{username}}</h3>
 
     	<div class="main">
-    		<p>{{text}}</p>
-    	</div>
+      {{{text}}}
+      </div>
 
     	<br style="clear:both;">
 
@@ -248,6 +332,42 @@ You can edit the instructions text.
   {{/posts}}  
 </script>
 
+<!--以下の部分
+　	<div class="main">
+    	<p>{{text}}</p>
+    	</div>
+      を
+<div class="main">
+  {{{text}}}
+</div>
+
+に変更（2026.02.04）
+
+<script type="template/text" id="usertmp">
+  {{#posts}}
+    
+    <div class="entry">
+    <div class="tophalf">
+
+    	<img src="{{avatar}}" class="avatar">
+    	<h3>{{username}}</h3>
+
+    	<div class="main">
+    	<p>{{text}}</p>
+    	</div>
+
+    	<br style="clear:both;">
+
+    </div>	
+
+    <div class="bottomhalf">
+    	Likes <span class="badge badge-custom userslikes" data-likes="{{likes}}" data-usernames="{{usernames}}">0</span>
+    </div>
+    </div>
+
+  {{/posts}}  
+</script>
+-->
 
 <script type="template/text" id="otherstmp">
   {{#posts}}
@@ -259,7 +379,7 @@ You can edit the instructions text.
     	
     	<div class="main">
     		
-    		<p>{{text}}</p>
+    		{{{text}}}
     	</div>
 
     	<br style="clear:both;">
