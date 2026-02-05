@@ -86,7 +86,7 @@ $(function() {
 
   		if(uname == "") {
   			error = 1;
-  			errormsg = 'テキストを入力してください。';
+  			errormsg = '名前を入力してください。';
   			uname = "undefined";
   		}
 
@@ -136,43 +136,123 @@ $(function() {
   			window.avatarexport = /avatar_([^\s]+)/.exec(window.avatar)[1];
     			init_text();  			
     		} else {
-    			alertify.log("Please select an avatar","error");
+    			alertify.log("アバターを選択してください。","error");
     		}
     	});
 
   }
 
-
   // **Slide:** **Description**   
   function init_text() {
   $('#text').show();
-  $("#description").keyup(function(){
-    $("#count").text("現在の文字数: " + $(this).val().length);
-  });
-  $('#submit_text').on('click',function() {
+
+  $('#submit_text').on('click', function() {
+
     var error = 0;
-    if($('#description').val() == "") {
+    var errormsg = "";
+
+    var age = $('#age').val();
+    var hometown = $('#hometown').val();
+    var hobby = $('#hobby').val();
+    var recentFun = $('#recentFun').val();
+    var freeText = $('#freeText').val();
+
+    // 年齢を数値に変換
+    age = parseInt(age, 10);
+
+    // --- バリデーションを書き換え（こちらが新しい） ---
+var emptyFields = [];
+
+    // 年齢：未入力
+    if (isNaN(age)) {
+      emptyFields.push("年齢");
+    }
+    // 年齢：18歳未満
+    else if (age < 18) {
       error = 1;
-      errormsg = 'テキストを入力してください。';
+      errormsg = '18歳以上の方のみ参加できます。';
     }
-    if($('#description').val() !== "" && $('#description').val().length < 50) {
-      error = 1;
-      errormsg = 'もう少し書いてください。';
-    }
-    if($('#description').val().length > 100) {
-      error = 1;
-      errormsg = 'テキストを少なめに入力してください。';
-    }
-    if(error == 0) {
-      $('#text').hide();
-      window.description = $('#description').val();
-      init_fb_intro();
-    } else {
-      alertify.log(errormsg,"error");
-    }
-  });
+
+// 居住地
+if(hometown === "") {
+  emptyFields.push("居住地");
 }
 
+// 趣味
+if(hobby === "") {
+  emptyFields.push("趣味");
+}
+
+// 最近一番楽しかったこと
+if(recentFun === "") {
+  emptyFields.push("最近一番楽しかったこと");
+}
+
+// その他（文字数チェックは独立）
+if(freeText.length > 50) {
+  error = 1;
+  errormsg = 'その他の欄は50字以内で入力してください。';
+}
+
+// 空欄が複数 or 全部
+if(emptyFields.length >= 2) {
+  error = 1;
+  errormsg = 'プロフィールを入力してください。';
+}
+
+// 空欄が1つだけ
+if(emptyFields.length === 1) {
+  error = 1;
+  errormsg = emptyFields[0] + 'を入力してください。';
+}
+
+    // --- バリデーション ---
+//    if(age === "" || age < 18) {
+//      error = 1;
+//      errormsg = '年齢を選択してください。';
+//    }
+
+//    if(hometown === "") {
+//      error = 1;
+//      errormsg = '居住地を選択してください。';
+//    }
+
+//    if(hobby === "") {
+//      error = 1;
+//      errormsg = '趣味を入力してください。';
+//    }
+
+//    if(recentFun === "") {
+//      error = 1;
+//      errormsg = '最近一番楽しかったことを入力してください。';
+//    }
+
+//    if(freeText.length > 50) {
+//      error = 1;
+//      errormsg = 'その他の欄は50字以内で入力してください。';
+//    }
+
+    if(error === 0) {
+  // ここまで
+
+
+  // --- プロフィールデータの保存 ---
+
+　window.profileText =
+　"年齢：" + age + "歳<br>" +
+　"居住地：" + hometown + "<br>" +
+  "趣味：" + hobby + "<br>" +
+　"最近楽しかったこと：" + recentFun +
+  (freeText ? "<br>" + freeText : "");
+
+  $('#text').hide();
+  init_fb_intro();
+
+} else {
+  alertify.log(errormsg, "error");
+}
+  });
+}
 
   // **Slide:** **Instructions**   
   function init_fb_intro() {
@@ -224,7 +304,7 @@ $(function() {
 			{
 			  "avatar": 'avatars/' + window.avatar + '.png',
 			  "username": window.username,
-			  "text": window.description,
+			  "text": window.profileText,
 			  "likes": window.settings.condition_likes,
 			  "usernames": window.settings.likes_by
 			}
