@@ -17,7 +17,7 @@ $(function() {
 
     settings.tasklength = 180000; 
 
-    settings.condition_1_likes = [12000, 9999999]; 
+    settings.condition_1_likes = [12000, 9999999];
     settings.condition_2_likes = [10000, 15000,35000,80000,1320000,150000];  
     settings.condition_3_likes = [10000, 11000,15000,35000,80000,100000,110000,150000,20000]; 
 
