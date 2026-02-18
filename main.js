@@ -11,57 +11,23 @@ $(function() {
   function set_settings() {
     window.settings = [];
 	
-	// **Number** **of** **Avatar** **Images**   
-	// Number of avatars the user can choose from. Can be changed to any number, depending on how many avatars you would like to display. Default: 82
-	// The avatar images used in the online preview of the paradigm were created using by pickaface.net and due to their terms not available for redistribution. You should therefore create your own images. All images should be 250x250 pixels in size and carry the names "avatar_NUMBER.png" (e.g. avatar_1.png; "png" should be lower case; the numbers in the names should be consequtive, starting from 1). The number of avatars dependeds on the corresponding parameter. The images should be placed in folder "avatars," located in the main study folder extracted on your computer or server.
-
-    settings.numberofavatars = 36;
-
-	
-    // **Redirection**    
-	// After the introduction task is over participants should be redirected to a survey with manipulation checks and dependent measures, to subsequent tasks, or to further instructions. 
-	// If the study is called with a parameter for redirection, as explained in the documentation, this value is overwritten. 
-	// To the redirect link, the following information will be appended: (1) participant number, (2) condition, (3) username, (4) description submitted by participant. These variables can be extracted from the link, saved as data, and used for linking the Social Media Ostracism paradigm to subsequent tasks and measures. See documentation for more details.
+    settings.numberofavatars = 24;
 
     settings.defaultredirect = 'https://osakashakaishinri.qualtrics.com/jfe/preview/previewId/f9dfef6f-813b-434e-a7fc-56452861ef4a/SV_50GU6ZV97rbZEX4?Q_CHL=preview&Q_SurveyVersionID=current';
 
-	
-	// **Tasklength**     
-    // Length of the group introduction task in milliseconds. Can be changed to any number (in ms). Default: 180000 (3min) 
     settings.tasklength = 180000; 
 
-	
-	// **Number** **of** **"likes"**    
-    // Each received "like" is indicated by the timepoint (in ms) at which the "like" will appear. To change the number of "likes" in each condition, add or remove timepoints. Make sure that every timepoint (except the first) is preceded by a single comma. 
-	// In cases with only 1 "like," a second "like" is added with time point 9999999. This "like" is added for programming purposes and is never executed, as it is outside the task time
-
-    // In condition 1, the participant will receive 1 like at the following timepoint (in ms). Default: [12000, 9999999]
     settings.condition_1_likes = [12000, 9999999]; 
-
-    // In condition 2, user will receive 6 likes at the following timepoints (in ms). Default: [10000, 15000,35000,80000,1320000,150000]
     settings.condition_2_likes = [10000, 15000,35000,80000,1320000,150000];  
-    
-    // In condition 3, user will receive 9 likes at the following timepoints (in ms). Default: [10000, 11000,15000,35000,80000,100000,110000,150000,20000]
     settings.condition_3_likes = [10000, 11000,15000,35000,80000,100000,110000,150000,20000]; 
 
-	// **Others' likes**     
-	// To keep the total distribution of "likes" constant across conditions, The "likes" received by one group member can be adjusted according to the participant's. By default, the other group member receives 9 "likes" in the participant-ostracism condition, 5 in the participant-inclusion condtion, and 1 in the participant-overinclusion condtion.
-	settings.condition_1_adjusted_likes = [12000, 14000,15000,35000,80000,100000,110000,150000,20000]; // 9
-	settings.condition_2_adjusted_likes = [12000, 14000,15000,35000,80000]; // 5
-	settings.condition_3_adjusted_likes = [12000, 9999999]; //1	
+    settings.condition_1_adjusted_likes = [12000, 14000,15000,35000,80000,100000,110000,150000,20000]; // 9
+    settings.condition_2_adjusted_likes = [12000, 14000,15000,35000,80000]; // 5
+    settings.condition_3_adjusted_likes = [12000, 9999999]; //1	
 	
-    // Usernames by which the participant will receive "likes"
-	// If group member names are changed, these should be changed accordingly.
     settings.likes_by = ['みなみ','Kim','彩','ハル','Y.K','陽菜','蓮','MK','ユウト']; 
   }
   
-  // -------------------
-  // Above were the basic parameters you can adjust using the instructions. The remaining code is also annotated, but we do not recommend changing it, unless you are comfortable with web programming.
-  // -------------------
-  
-  
-  // **Slide:** **Intro**     
-  // With instructions regarding the task. The intro container is shown, the continue calls the next slide when clicked.
   function init_intro() {
   	$('#intro').show();
   	$('#submit_intro').on('click',function() {
@@ -70,15 +36,10 @@ $(function() {
   	});	
   }
   
-
-  // **Slide:** **Username**       
-  // Note: Only alphanumeric usernames without spaces are accepted
-  
   function init_name() {
 
   	$('#name').show();
 
-    
   	$('#submit_username').on('click',function() {
 
   		var error = 0;
@@ -91,8 +52,6 @@ $(function() {
   		}
 
 　　　   function isValidName(name){ 
-        // アルファベット・ひらがな・カタカナ・漢字を許可
-        // スペースや数字、記号は不可
         return /^[A-Za-z\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]+$/.test(name);
       }
   		if(!isValidName(uname)) {
@@ -108,13 +67,9 @@ $(function() {
   			alertify.log(errormsg,"error");
   		}
 
-
   	});
   }
 
-  // **Slide:** **Avatar**       
-  // Avatar slide in which the participant is asked to select an avatar
-   
   function init_avatar() {
   	$('#avatar').show();
 
@@ -144,134 +99,118 @@ $(function() {
 
   // **Slide:** **Description**   
   function init_text() {
-  $('#text').show();
+    $('#text').show();
 
-  $('#submit_text').on('click', function() {
+    $('#submit_text').on('click', function() {
 
-    var error = 0;
-    var errormsg = "";
+      var error = 0;
+      var errormsg = "";
 
-    var age = $('#age').val();
-    var hometown = $('#hometown').val();
-    var hobby = $('#hobby').val();
-    var recentFun = $('#recentFun').val();
-    var freeText = $('#freeText').val();
+      var age = $('#age').val();
+      var hometown = $('#hometown').val();
+      var recentFun = $('#recentFun').val();
+      var freeText = $('#freeText').val();
 
-    // 年齢を数値に変換
-    age = parseInt(age, 10);
+      age = parseInt(age, 10);
 
-    // --- バリデーションを書き換え（こちらが新しい） ---
-var emptyFields = [];
+      // ========================================
+      // 【修正】チェックボックスから趣味を取得（最大3つ）
+      // ========================================
+      var selectedHobbies = [];
+      $('input[type="checkbox"]:checked').each(function() {
+        if($(this).val() !== 'その他') {
+          selectedHobbies.push($(this).val());
+        }
+      });
 
-    // 年齢：未入力
-    if (isNaN(age)) {
-      emptyFields.push("年齢");
-    }
-    // 年齢：18歳未満
-    else if (age < 18) {
-      error = 1;
-      errormsg = '18歳以上の方のみ参加できます。';
-    }
+      // 「その他」が選択されていた場合
+      var otherChecked = $('#hobby_other').is(':checked');
+      var otherText = $('#hobby_other_text').val().trim();
+      if(otherChecked) {
+        if(otherText !== '') {
+          selectedHobbies.push(otherText); // 「〇〇」だけ表示
+        } else {
+          selectedHobbies.push('その他');
+        }
+      }
+      // ========================================
 
-// 居住地
-if(hometown === "") {
-  emptyFields.push("居住地");
-}
+      // --- バリデーション ---
+      var emptyFields = [];
 
-// 趣味
-if(hobby === "") {
-  emptyFields.push("趣味");
-}
+      if (isNaN(age)) {
+        emptyFields.push("年齢");
+      } else if (age < 18) {
+        error = 1;
+        errormsg = '18歳以上の方のみ参加できます。';
+      }
 
-// 最近一番楽しかったこと
-if(recentFun === "") {
-  emptyFields.push("最近一番楽しかったこと");
-}
+      if(hometown === "") {
+        emptyFields.push("居住地");
+      }
 
-// その他（文字数チェックは独立）
-if(freeText.length > 50) {
-  error = 1;
-  errormsg = 'その他の欄は50字以内で入力してください。';
-}
+      // ========================================
+      // 【修正】趣味のバリデーション（チェックボックス対応）
+      // ========================================
+      if(selectedHobbies.length === 0) {
+        emptyFields.push("趣味");
+      }
+      // ========================================
 
-// 空欄が複数 or 全部
-if(emptyFields.length >= 2) {
-  error = 1;
-  errormsg = 'プロフィールを入力してください。';
-}
+      if(recentFun === "") {
+        emptyFields.push("最近一番楽しかったこと");
+      }
 
-// 空欄が1つだけ
-if(emptyFields.length === 1) {
-  error = 1;
-  errormsg = emptyFields[0] + 'を入力してください。';
-}
+      if(freeText.length > 50) {
+        error = 1;
+        errormsg = 'その他の欄は50字以内で入力してください。';
+      }
 
-    // --- バリデーション ---
-//    if(age === "" || age < 18) {
-//      error = 1;
-//      errormsg = '年齢を選択してください。';
-//    }
+      if(emptyFields.length >= 2) {
+        error = 1;
+        errormsg = 'プロフィールを入力してください。';
+      }
 
-//    if(hometown === "") {
-//      error = 1;
-//      errormsg = '居住地を選択してください。';
-//    }
+      if(emptyFields.length === 1) {
+        error = 1;
+        errormsg = emptyFields[0] + 'を入力してください。';
+      }
 
-//    if(hobby === "") {
-//      error = 1;
-//      errormsg = '趣味を入力してください。';
-//    }
+      if(error === 0) {
 
-//    if(recentFun === "") {
-//      error = 1;
-//      errormsg = '最近一番楽しかったことを入力してください。';
-//    }
+        // ========================================
+        // 【修正】趣味をカンマ区切りで結合してプロフィールに表示
+        // ========================================
+        var hobbyDisplay = selectedHobbies.join('、');
 
-//    if(freeText.length > 50) {
-//      error = 1;
-//      errormsg = 'その他の欄は50字以内で入力してください。';
-//    }
+        window.profileText =
+          "年齢：" + age + "歳<br>" +
+          "居住地：" + hometown + "<br>" +
+          "趣味：" + hobbyDisplay + "<br>" +
+          "最近楽しかったこと：" + recentFun +
+          (freeText ? "<br>" + freeText : "");
+        // ========================================
 
-    if(error === 0) {
-  // ここまで
+        $('#text').hide();
+        init_fb_intro();
 
+      } else {
+        alertify.log(errormsg, "error");
+      }
+    });
+  }
 
-  // --- プロフィールデータの保存 ---
-
-　window.profileText =
-　"年齢：" + age + "歳<br>" +
-　"居住地：" + hometown + "<br>" +
-  "趣味：" + hobby + "<br>" +
-　"最近楽しかったこと：" + recentFun +
-  (freeText ? "<br>" + freeText : "");
-
-  $('#text').hide();
-  init_fb_intro();
-
-} else {
-  alertify.log(errormsg, "error");
-}
-  });
-}
-
-  // **Slide:** **Instructions**   
   function init_fb_intro() {
   	$('#fb_intro').show();
 	
   	$('#submit_fb_intro').on('click',function() {
-
 			$('#fb_intro').hide();
  			init_fb_login();  			
-
   	});	
   }
 
-
-  // **Slide:** **Login** **Screen**   
-  // Participant can continue after 8000ms = 8s      
   function init_fb_login() {
   	$('#fb_login').show();
-	
 
   	setTimeout(function() {
   		$('#msg_all_done').show();
@@ -292,7 +231,7 @@ if(emptyFields.length === 1) {
 	shortcut.add("Backspace",function() {});      
 
   	jQuery("#countdown").countDown({
-  		startNumber: window.settings.tasklength/1000, // in seconds
+  		startNumber: window.settings.tasklength/1000,
   		callBack: function(me) {
   			console.log('over');
         $('#timer').text('00:00');
@@ -311,19 +250,15 @@ if(emptyFields.length === 1) {
 		  ]
 		};
 		
-    // Add user box to slide     
-	  var tpl = $('#usertmp').html(),html = Mustache.to_html(tpl, users);
+    var tpl = $('#usertmp').html(),html = Mustache.to_html(tpl, users);
 	  $("#task").append(html);
 	  
-    // Add other boxes to slide    
-	  var tpl = $('#otherstmp').html(),html = Mustache.to_html(tpl, others);
+    var tpl = $('#otherstmp').html(),html = Mustache.to_html(tpl, others);
 	  $("#task").append(html);
  
-    // Randomize order of other players boxes
     function reorder() {
        var grp = $("#others").children();
        var cnt = grp.length;
-
        var temp,x;
        for (var i = 0; i < cnt; i++) {
            temp = grp[i];
@@ -336,7 +271,6 @@ if(emptyFields.length === 1) {
     }
     reorder();    
 
-    // When user receives likes
 	  $('.userslikes').each(function() {
   		var that = $(this);
   		var usernames = $(this).data('usernames').split(",");
@@ -345,83 +279,57 @@ if(emptyFields.length === 1) {
   		for(var i=0; i<times.length; i++) 
   		{ 
   			times[i] = +times[i]; 
-  			
   			themsg = usernames[i] + " があなたの投稿に「いいね」しました。";
-
   			setTimeout(function(themsg) {
   				that.text(parseInt(that.text()) + 1);
   				alertify.success(themsg)
-
   			}, times[i], themsg);
   		} 		
 	  });
 	  
-    // When others receive likes
 	  $('.otherslikes').each(function() {
   		var that = $(this);
   		var times = $(this).data('likes').split(",");
-  		
   		for(var i=0; i<times.length; i++) 
   		{ 
   			times[i] = +times[i]; 
-  			
   			setTimeout(function () {
   				that.text(parseInt(that.text()) + 1);
   			}, times[i]);
-  			
   		} 
 	  });
-	 
 
-    // Initialize like buttons
 	  $('.btn-like').on('click', function() {
 		  $(this).prev().text(parseInt($(this).prev().text()) + 1);
-      // Like buttons can only be clicked once
 		  $(this).attr("disabled", true);
 	  });
 
-    // Initalize Masonry plugin
-    // For display of user and other players boxes in columns without gaps
 		$('#task').masonry({
 		  itemSelector : '.entry',
 		  columnWidth : 10
 		});
 
-
-    // Redirect, default after 180000ms = 180s = 3min
     setTimeout(function() {
     
-    $(window).unbind('beforeunload');
-    
- // $('#final-continue').show(); // この行をコメントアウト
+      $(window).unbind('beforeunload');
+      $('#timer').text('00:00');
 
-    $('#timer').text('00:00');
-		
- // 以下のボタンクリックイベント部分をコメントアウト 
-/*
-    $('#final-continue').on('click', function() {
-
-      // Redirect link
-      location.href = window.redirect+'&p='+window.participant+'&c='+window.condition+'&u='+encodeURI(window.username)+'&av='+window.avatarexport+'&d='+encodeURI(window.description);
-
-    });
- */
-		
-    },window.settings.tasklength); // timing for task
+      // ========================================
+      // クアルトリクスに実験完了を通知
+      // ========================================
+      notifyQualtrics();
+      
+    }, window.settings.tasklength);
 
   }
 	
+  function get_params() {
 
-  // Get URL parameters to set condition number and participant number
-function get_params() {
-
-    // 【1】URLに c が無ければランダムに 1 か 2 を割り当て
     if(window.QueryString.c === undefined) {
         window.condition = (Math.random() < 0.5) ? 1 : 2;
         console.log("Random Condition:", window.condition);
     }
 
-    // 【2】URLに c がある場合は、その値（1 または 2)を使う
     if(window.QueryString.c !== undefined && !isNaN(parseInt(window.QueryString.c))) {
         const c = parseInt(window.QueryString.c);
         if(c === 1 || c === 2) {
@@ -429,20 +337,12 @@ function get_params() {
         }
     }
 
-// participant number（文字列対応）
-if(window.QueryString.p !== undefined && window.QueryString.p !== "") {
-  window.participant = window.QueryString.p;  // 文字列のまま保存
-} else {
-  window.participant = "0"; // デフォルト値も文字列に
-}
-    //参加者IDの以前の設定コード participant number
-    // if(window.QueryString.p !== undefined && !isNaN(parseInt(window.QueryString.p))) {
-    //   window.participant = parseInt(window.QueryString.p);
-    // } else {
-    //  window.participant = 0;
-    // }    
+    if(window.QueryString.p !== undefined && window.QueryString.p !== "") {
+      window.participant = window.QueryString.p;
+    } else {
+      window.participant = "0";
+    }
 
-    // redirect
     if(window.QueryString.redirect !== undefined && window.QueryString.redirect !== "") {
       window.redirect = decode(window.QueryString.redirect);
     } else {
@@ -453,15 +353,9 @@ if(window.QueryString.p !== undefined && window.QueryString.p !== "") {
     if(!urlHasQuestionMark) {
         window.redirect = window.redirect + "?redir=1";
     }
-}
+  }
 
-  
-  
-  // adjustments according to current condition
   function adjust_to_condition() {
-
-    // the number of likes a person receives depends on the condition
-	// in addition, the number of likes another person receives is adjusted, so that there is the same number of likes overall
 	switch(condition) {
 		case 1:
 			window.settings.condition_likes = settings.condition_1_likes;
@@ -476,36 +370,26 @@ if(window.QueryString.p !== undefined && window.QueryString.p !== "") {
 			window.others.posts[1].likes = settings.condition_3_adjusted_likes;
 			break;
 	}	
-	  
   }
-  
 
-  // The variable QueryString contains the url parameters, i.e. condition no. and participant no.
-  // via http://stackoverflow.com/a/979995
   window.QueryString = function () {
     var query_string = {};
     var query = window.location.search.substring(1);
     var vars = query.split("&");
     for (var i=0;i<vars.length;i++) {
       var pair = vars[i].split("=");
-        // If first entry with this name
       if (typeof query_string[pair[0]] === "undefined") {
         query_string[pair[0]] = pair[1];
-        // If second entry with this name
       } else if (typeof query_string[pair[0]] === "string") {
         var arr = [ query_string[pair[0]], pair[1] ];
         query_string[pair[0]] = arr;
-        // If third or later entry with this name
       } else {
         query_string[pair[0]].push(pair[1]);
       }
     } 
-      return query_string;
+    return query_string;
   } ();
 
-
-  // Function to check letters and numbers
-  // via http://www.w3resource.com/javascript/form/letters-numbers-field.php
   function not_alphanumeric(inputtxt) {
     var letterNumber = /^[0-9a-zA-Z]+$/;
     if(inputtxt.match(letterNumber)) {
@@ -515,15 +399,10 @@ if(window.QueryString.p !== undefined && window.QueryString.p !== "") {
       }
   }
 
-
-  // Function to add extra zeros infront of numbers (used for the countdown)
-  // via http://stackoverflow.com/a/6466243
   function pad (str, max) {
     return str.length < max ? pad("0" + str, max) : str;
   }
 
-  // Function for encoding and decoding URLs
-  // via http://meyerweb.com/eric/tools/dencoder/
   function encode(unencoded) {
 	return encodeURIComponent(unencoded).replace(/'/g,"%27").replace(/"/g,"%22");	
   }
@@ -531,9 +410,6 @@ if(window.QueryString.p !== undefined && window.QueryString.p !== "") {
 	return decodeURIComponent(encoded.replace(/\+/g,  " "));
   }
 
-  
-  // Simple Countdown
-  // via http://davidwalsh.name/jquery-countdown-plugin
   jQuery.fn.countDown = function(settings,to) {
     settings = jQuery.extend({
       startFontSize: "12px",
@@ -564,12 +440,10 @@ if(window.QueryString.p !== undefined && window.QueryString.p !== "") {
   };
 
   // ========================================
-  // 【追加】クアルトリクス連携：実験完了通知関数
+  // クアルトリクス連携：実験完了通知関数
   // ========================================
   function notifyQualtrics() {
     console.log('=== 実験完了：クアルトリクスに通知 ===');
-    
-    // 親ウィンドウ(クアルトリクス)にメッセージを送信
     if (window.parent !== window) {
       window.parent.postMessage('ostracism_complete', '*');
       console.log('通知送信完了');
@@ -578,18 +452,15 @@ if(window.QueryString.p !== undefined && window.QueryString.p !== "") {
     }
   }
 
-  // Prevent that participants accidentally exit the experiment by disabling F5 and backspace keys
   shortcut.add("f5",function() {});  
   $(window).bind('beforeunload', function(){
     return 'Are you sure you want to quit the experiment completely?';
   });   
 
-  // Set Settings, get Participant No. and Condition No.
   set_settings();
   get_params();
   adjust_to_condition();
 
-  // Start with the intro slide
   init_intro();
 
 });
