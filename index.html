@@ -203,8 +203,49 @@ You can edit the instructions text.
   <option value="沖縄県">沖縄県</option>
 </select><br><br>
 
-  趣味：<br>
-  <input type="text" id="hobby"><br><br>
+  <label for="hobby">趣味（複数選択可・最大3つ）</label><br>
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px;">
+  <div><input type="checkbox" class="hobby-check" id="hobby_sports" value="スポーツ観戦"><label for="hobby_sports">スポーツ観戦</label></div>
+  <div><input type="checkbox" class="hobby-check" id="hobby_art" value="芸術鑑賞"><label for="hobby_art">芸術鑑賞</label></div>
+  <div><input type="checkbox" class="hobby-check" id="hobby_reading" value="読書"><label for="hobby_reading">読書</label></div>
+  <div><input type="checkbox" class="hobby-check" id="hobby_game" value="ゲーム・ボードゲーム"><label for="hobby_game">ゲーム・ボードゲーム</label></div>
+  <div><input type="checkbox" class="hobby-check" id="hobby_creative" value="創作活動"><label for="hobby_creative">創作活動</label></div>
+  <div><input type="checkbox" class="hobby-check" id="hobby_music" value="音楽舞踊"><label for="hobby_music">音楽舞踊</label></div>
+  <div><input type="checkbox" class="hobby-check" id="hobby_cooking" value="料理手芸"><label for="hobby_cooking">料理手芸</label></div>
+  <div><input type="checkbox" class="hobby-check" id="hobby_nature" value="自然活動"><label for="hobby_nature">自然活動</label></div>
+  <div><input type="checkbox" class="hobby-check" id="hobby_other" value="その他"><label for="hobby_other">その他</label></div>
+</div>
+
+<!-- その他の自由記述欄（その他を選択した時のみ表示） -->
+<div id="hobby_other_div" style="display:none; margin-top: 8px;">
+  <label for="hobby_other_text">その他（自由記述）</label><br>
+  <input type="text" id="hobby_other_text" placeholder="趣味を入力してください" lang="ja" style="ime-mode: active;">
+</div>
+<br>
+
+<script>
+// 「その他」チェックボックスの表示切替
+document.getElementById('hobby_other').addEventListener('change', function() {
+  var otherDiv = document.getElementById('hobby_other_div');
+  if (this.checked) {
+    otherDiv.style.display = 'block';
+  } else {
+    otherDiv.style.display = 'none';
+    document.getElementById('hobby_other_text').value = '';
+  }
+});
+
+// 最大3つまでの制限
+document.querySelectorAll('.hobby-check').forEach(function(checkbox) {
+  checkbox.addEventListener('change', function() {
+    var checked = document.querySelectorAll('.hobby-check:checked');
+    if (checked.length > 3) {
+      this.checked = false;
+      alert('趣味は最大3つまで選択できます。');
+    }
+  });
+});
+</script>
 
   最近一番楽しかったこと：<br>
   <input type="text" id="recentFun"><br><br>
