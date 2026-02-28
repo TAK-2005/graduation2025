@@ -199,16 +199,50 @@ $(function() {
       }
     });
   }
-
+// 以下、理解度チェックのため、変更・追加
   function init_fb_intro() {
-  	$('#fb_intro').show();
-	
-  	$('#submit_fb_intro').on('click',function() {
-			$('#fb_intro').hide();
- 			init_fb_login();  			
-  	});	
-  }
+  $('#fb_intro').show();
+  $('#submit_fb_intro').on('click',function() {
+      $('#fb_intro').hide();
+      init_comprehension_check();  // ← ログインの前にクイズへ
+  }); 
+}
 
+  function init_comprehension_check() {
+  $('#comprehension_check').show();
+
+  // ボタンの重複登録を防ぐため off() してから on()
+  $('#submit_comprehension').off('click').on('click', function() {
+    var q1 = $('input[name="q1"]:checked').val();
+    var q2 = $('input[name="q2"]:checked').val();
+
+    // 未回答チェック
+    if (!q1 || !q2) {
+      alertify.log('すべての質問に回答してください。', 'error');
+      return;
+    }
+
+    // 正誤判定（①はA、②はB）
+    if (q1 === 'A' && q2 === 'B') {
+      // 全問正解 → ログインへ
+      $('#comprehension_check').hide();
+      init_fb_login();
+    } else {
+      // 1問でも不正解 → 説明ページへ戻す
+      alertify.log('正しく理解できていない項目があります。もう一度指示を読んでください。', 'error');
+      $('#comprehension_check').hide();
+
+      // ラジオボタンをリセット
+      $('input[name="q1"]').prop('checked', false);
+      $('input[name="q2"]').prop('checked', false);
+
+      // fb_introに戻る（ボタンのイベントを再登録するためinit_fb_intro()を呼ぶ）
+      init_fb_intro();
+    }
+  });
+}
+// ここまで
+	
   function init_fb_login() {
   	$('#fb_login').show();
 
