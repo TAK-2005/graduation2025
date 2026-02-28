@@ -274,6 +274,9 @@ span.cntr.label.label-info {
     max-width: 100%;
     box-sizing: border-box;
   }
+　#others {
+    column-count: 1 !important;
+  }
   
   .container {
     width: 100% !important;
