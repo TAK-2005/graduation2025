@@ -337,7 +337,11 @@ $(function() {
 		  $(this).prev().text(parseInt($(this).prev().text()) + 1);
 		  $(this).attr("disabled", true);
 	  });
-
+	 
+ $('#task').masonry({
+   itemSelector : '.entry',
+   columnWidth : 10
+ });
     setTimeout(function() {
     
       $(window).unbind('beforeunload');
