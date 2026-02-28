@@ -338,10 +338,30 @@ $(function() {
 		  $(this).attr("disabled", true);
 	  });
 
-		$('#others').masonry({
-		  itemSelector : '.entry',
-		  columnWidth : 10
-		});
+		var $container = $('#others');
+var imgCount = $container.find('img').length;
+var loadedCount = 0;
+
+if (imgCount === 0) {
+  $container.masonry({
+    itemSelector: '.entry',
+    columnWidth: 10
+  });
+} else {
+  $container.find('img').each(function() {
+    var img = new Image();
+    img.onload = img.onerror = function() {
+      loadedCount++;
+      if (loadedCount === imgCount) {
+        $container.masonry({
+          itemSelector: '.entry',
+          columnWidth: 10
+        });
+      }
+    };
+    img.src = this.src;
+  });
+}
 
     setTimeout(function() {
     
