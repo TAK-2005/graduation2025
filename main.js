@@ -258,10 +258,10 @@ $(function() {
   }
   
   // **Slide:** **Task**   
-  function init_task() {
-
+ function init_task() {
     $('#task').show();
-
+    $('#countdown').show();
+	 
 	shortcut.add("Backspace",function() {});      
 
   	jQuery("#countdown").countDown({
