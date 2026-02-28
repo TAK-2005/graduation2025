@@ -294,8 +294,8 @@ You can edit the instructions text. The prompt to try and form an impression of 
  この課題は3分間行われます。<br>
  ページを切り替えたり、他の作業を行わず、画面の内容に注意を向けて取り組んでください。<br>
  後の課題で、他の参加者について質問される場合があります。<br><br>
- <b>内容をよく読んだうえで、次へ進んでください。</b><br><br>
- <button type="submit"  id="submit_fb_intro">次へ</button>
+ <b>指示をよく読んだら、ログインしてください。</b><br><br>
+ <button type="submit"  id="submit_fb_intro">ログイン</button>
  </div>
 
 <!---<h3>Group Introduction</h3>
@@ -312,6 +312,31 @@ You can edit the instructions text. The prompt to try and form an impression of 
   <br><br><b>If these instructions are clear, you can proceed to log in.</b><br>
   <br>
   -->
+
+<div id="comprehension_check" style="display:none;" class="instr">
+  <h3>理解度チェック</h3>
+  指示をどの程度理解できたか確認します。以下の質問に答えてください。<br><br>
+
+  <p><b>1. 次の課題の目的として、最も適切なものを選んでください。</b></p>
+  <div>
+    <input type="radio" name="q1" id="q1a" value="A"><label for="q1a">A. 表示されるプロフィールを読み、他の参加者がどのような人かについて自分なりの印象を持つこと</label><br>
+    <input type="radio" name="q1" id="q1b" value="B"><label for="q1b">B. できるだけ多くの「いいね」を押して、他の参加者と交流すること</label><br>
+    <input type="radio" name="q1" id="q1c" value="C"><label for="q1c">C. 自分のプロフィールを他の参加者に覚えてもらうこと</label><br>
+    <input type="radio" name="q1" id="q1d" value="D"><label for="q1d">D. 操作に慣れるため、自由に画面を試しに操作すること</label>
+  </div>
+  <br>
+
+  <p><b>2. プロフィールを読んで「関心を持った」と感じた場合、どの行動を取るのが正しいですか？</b></p>
+  <div>
+    <input type="radio" name="q2" id="q2a" value="A"><label for="q2a">A. 何もせず、次のプロフィールが表示されるのを待つ</label><br>
+    <input type="radio" name="q2" id="q2b" value="B"><label for="q2b">B. 「いいね」ボタンをクリックする</label><br>
+    <input type="radio" name="q2" id="q2c" value="C"><label for="q2c">C. 画面を閉じて、次の課題に進む</label><br>
+    <input type="radio" name="q2" id="q2d" value="D"><label for="q2d">D. 同じプロフィールを何度も開き直す</label>
+  </div>
+  <br>
+
+  <button type="submit" id="submit_comprehension">回答する</button>
+</div>
 
 <div id="fb_login" style="display:none;" class="instr">
   <h3>接続中</h3>
