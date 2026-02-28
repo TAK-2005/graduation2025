@@ -338,7 +338,7 @@ $(function() {
 		  $(this).attr("disabled", true);
 	  });
 
-		$('#task').masonry({
+		$('#others').masonry({
 		  itemSelector : '.entry',
 		  columnWidth : 10
 		});
