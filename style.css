@@ -542,3 +542,17 @@ span.cntr.label.label-info {
     padding: 12px !important;
   }
 }
+
+#others {
+  column-count: 3;
+  column-gap: 0px;
+}
+
+#others .entry {
+  display: inline-block;
+  width: 100%;
+  float: none !important;
+  margin: 10px 0 !important;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+}
