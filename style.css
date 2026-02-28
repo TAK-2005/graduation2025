@@ -242,7 +242,9 @@ span.cntr.label.label-info {
 	top: auto;
 	text-align: left;
 	color: #858585;
-	margin-bottom: 15px;
+	margin-bottom: 5px;
+	margin-top: 0;
+	padding: 0;
 	clear: both;
 	display: block;
 }
