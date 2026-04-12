@@ -11,7 +11,7 @@ $(function() {
   function set_settings() {
     window.settings = [];
 	
-    settings.numberofavatars = 24;
+    settings.numberofavatars = 35;
 
     settings.defaultredirect = 'https://osakashakaishinri.qualtrics.com/jfe/preview/previewId/f9dfef6f-813b-434e-a7fc-56452861ef4a/SV_50GU6ZV97rbZEX4?Q_CHL=preview&Q_SurveyVersionID=current';
 
