@@ -15,15 +15,17 @@ $(function() {
 
     settings.defaultredirect = 'https://osakashakaishinri.qualtrics.com/jfe/preview/previewId/f9dfef6f-813b-434e-a7fc-56452861ef4a/SV_50GU6ZV97rbZEX4?Q_CHL=preview&Q_SurveyVersionID=current';
 
-    settings.tasklength = 180000; 
-
-    settings.condition_1_likes = [12000, 9999999];
-    settings.condition_2_likes = [10000, 15000,35000,80000,1320000,150000];  
-    settings.condition_3_likes = [10000, 11000,15000,35000,80000,100000,110000,150000,20000]; 
-
-    settings.condition_1_adjusted_likes = [12000, 14000,15000,35000,80000,100000,110000,150000,20000]; // 9
-    settings.condition_2_adjusted_likes = [12000, 14000,15000,35000,80000]; // 5
-    settings.condition_3_adjusted_likes = [12000, 9999999]; //1	
+    settings.tasklength = 90000; // 180000→90000（3分→1分30秒）
+ 
+    // 排斥条件（condition_1）：いいねなし→変更なし（9999999は課題時間外なので維持）
+    settings.condition_1_likes = [6000, 9999999]; // ÷2
+    // 包含条件（condition_2）：÷2（9999999→課題時間外タイムアウト用なので維持）
+    settings.condition_2_likes = [5000, 7500, 17500, 40000, 45000, 75000];  // ÷2
+    settings.condition_3_likes = [5000, 5500, 7500, 17500, 40000, 50000, 55000, 75000, 10000]; // ÷2
+ 
+    settings.condition_1_adjusted_likes = [6000, 7000, 7500, 17500, 40000, 50000, 55000, 75000, 10000]; // ÷2 (9)
+    settings.condition_2_adjusted_likes = [6000, 7000, 7500, 17500, 40000]; // ÷2 (5)
+    settings.condition_3_adjusted_likes = [6000, 9999999]; // ÷2 (1)
 	
     settings.likes_by = ['みなみ','Kim','彩','ハル','Y.K','陽菜','蓮','MK','ユウト']; 
   }
