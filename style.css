@@ -1,6 +1,8 @@
 body { 
   padding-top: 30px;
   overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.8;
 }
 
 .container {
@@ -44,7 +46,7 @@ img.avatar {
 .tophalf .main {
 	float: left;
 	width: 120px;
-	font-size: 9pt;
+	font-size: 12pt;
 	text-align: left;
 	padding-left: 15px;
 }
@@ -52,7 +54,7 @@ img.avatar {
 .tophalf h3 {
 	color: #3B5999;
   font-variant: normal;
-	font-size: 20px;
+	font-size: 24px;
 	text-transform:capitalize;
   margin-left: 85px;
   padding-left: 0px;
@@ -95,7 +97,7 @@ button.btn.btn-primary {
     color: #ffd75e;
     font-weight: bold;
 	font-family: Helvetica, Arial, sans-serif;
-    font-size: 17px;
+    font-size: 20px;
     padding-top: 4px;
 }
 
@@ -192,6 +194,7 @@ span.badge.badge-custom.userslikes {
 	margin-top: 0px;
 	clear: both;
 }
+
 .avatar {
 	border-radius: 8px;
 	cursor: pointer;	
@@ -246,6 +249,18 @@ span.cntr.label.label-info {
 	clear: both;
 	display: block;
 }
+/*以下変更
+#countdown {
+	position: relative;
+	float:right;
+	width: 75px;
+	padding-right: -50px;
+	top: 40px;
+	text-align:left; 
+  color: #858585;	
+}
+  ここまで*/
+
 
 /* ================================================
    *** スマホ対応のレスポンシブデザイン ***
@@ -272,7 +287,7 @@ span.cntr.label.label-info {
     max-width: 100%;
     box-sizing: border-box;
   }
-	
+  
   .container {
     width: 100% !important;
     padding: 0 10px;
@@ -331,7 +346,7 @@ span.cntr.label.label-info {
   
   .tophalf .main {
     width: calc(100% - 75px) !important;
-    font-size: 9pt;
+    font-size: 12pt;
     padding-left: 10px;
     word-wrap: break-word;
   }
@@ -342,7 +357,7 @@ span.cntr.label.label-info {
   }
   
   div.main p {
-    font-size: 9pt;
+    font-size: 12pt;
     word-wrap: break-word;
   }
   
@@ -504,7 +519,7 @@ span.cntr.label.label-info {
   }
   
   .tophalf .main {
-    font-size: 8pt;
+    font-size: 11pt;
     width: calc(100% - 60px) !important;
   }
   
@@ -513,7 +528,7 @@ span.cntr.label.label-info {
   }
   
   div.main p {
-    font-size: 8pt;
+    font-size: 11pt;
   }
   
   #avatar .avatar {
